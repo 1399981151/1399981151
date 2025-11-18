@@ -3,104 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>设备信息编辑器</title>
+    <title>翔大帅哥制作</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f5f5f5;
             font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
         }
-        .container {
-            position: relative;
-            width: 100%;
-            max-width: 400px;
-            overflow: hidden;
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
         }
-        .background-image {
-            width: 100%;
-            display: block;
+        .nav-container {
+            display: flex;
+            gap: 20px;
         }
-        .editable-fields {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        .nav-link {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
         }
-        /* 引入思源黑体字体 */
-        @font-face {
-            font-family: 'Source Han Sans';
-            src: local('Source Han Sans Bold'), local('思源黑体 Bold');
-            font-weight: bold;
+        .nav-link:hover {
+            background-color: #45a049;
         }
-        
-        .text-field {
-            position: absolute;
-            background-color: transparent;
-            border: 1px solid transparent;
-            padding: 5px;
-            font-size: 14px;
-            font-family: 'Source Han Sans', sans-serif;
-            font-weight: bold;
-            outline: none;
-            resize: none;
-            color: #aaaaaa;
+        .image-preview {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
         }
-        .text-field:focus {
-            border-color: transparent;
-            box-shadow: none;
+        .preview-item {
+            text-align: center;
         }
-
+        .preview-item img {
+            max-width: 200px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="1.png" alt="设备信息背景" class="background-image">
-        <div class="editable-fields">
-            <!-- 序列号 -->
-            <input type="text" class="text-field" style="top: 135px; left: 20px; width: 150px;" placeholder="序列号">
-            
-            <!-- IMEI 1 -->
-            <input type="text" class="text-field" style="top: 259px; left: 20px; width: 250px;" placeholder="IMEI 1">
-            
-            <!-- MEID 1 HEX -->
-            <input type="text" class="text-field" style="top: 387px; left: 20px; width: 250px;" placeholder="MEID 1 HEX">
-            
-            <!-- MEID 1 DEC -->
-            <input type="text" class="text-field" style="top: 490px; left: 20px; width: 280px;" placeholder="MEID 1 DEC">
-            
-            <!-- IMEI 2 -->
-            <input type="text" class="text-field" style="top: 616px; left: 20px; width: 250px;" placeholder="IMEI 2">
-            
-            <!-- MEID 2 HEX -->
-            <input type="text" class="text-field" style="top: 745px; left: 20px; width: 250px;" placeholder="MEID 2 HEX">
-            
-            <!-- MEID 2 DEC -->
-            <input type="text" class="text-field" style="top: 849px; left: 20px; width: 280px;" placeholder="MEID 2 DEC">
-            
-
+    <h1>选择模版</h1>
+    <div class="nav-container">
+        <a href="1.html" class="nav-link">前往页面1</a>
+        <a href="2.html" class="nav-link">前往页面2</a>
+    </div>
+    <div class="image-preview">
+        <div class="preview-item">
+            <p>页面1预览图</p>
+            <img src="1.png" alt="页面1预览">
+        </div>
+        <div class="preview-item">
+            <p>页面2预览图</p>
+            <img src="2.png" alt="页面2预览">
         </div>
     </div>
-    
-    <script>
-        // 调整文本框位置和大小的脚本
-        document.addEventListener('DOMContentLoaded', function() {
-            // 这里可以添加动态调整文本框位置的逻辑
-            // 根据图片加载完成后的实际尺寸调整文本框位置
-            const img = document.querySelector('.background-image');
-            const fields = document.querySelectorAll('.text-field');
-            
-            img.onload = function() {
-                // 图片加载完成后，可以根据需要调整文本框位置
-                console.log('图片加载完成，尺寸:', img.width, 'x', img.height);
-                // 如果需要动态调整位置，可以在这里添加代码
-            };
-        });
-    </script>
 </body>
 </html>
