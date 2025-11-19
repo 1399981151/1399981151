@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱的告白</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B81',
+                        secondary: '#87CEFA',
+                        accent: '#FFD700',
+                        dark: '#333333',
+                        light: '#F8F9FA'
+                    },
+                    fontFamily: {
+                        romantic: ['"Ma Shan Zheng"', 'cursive', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            }
+            .text-shadow-lg {
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+            }
+            .animate-float {
+                animation: float 3s ease-in-out infinite;
+            }
+            .animate-float-slow {
+                animation: float 4s ease-in-out infinite;
+            }
+            .animate-heartbeat {
+                animation: heartbeat 1.5s ease-in-out infinite;
+            }
+            .animate-fade-in-up {
+                animation: fadeInUp 1s ease-out forwards;
+            }
+            .animate-fade-in {
+                animation: fadeIn 1.5s ease-out forwards;
+            }
+            .animate-slide-in-right {
+                animation: slideInRight 1s ease-out forwards;
+            }
+            .bg-blur {
+                backdrop-filter: blur(8px);
+            }
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        /* 全局动画定义 */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.1); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.1); }
+            70% { transform: scale(1); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+    <!-- 引入Google字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-b from-sky-50 to-pink-50 min-h-screen overflow-x-hidden">
+    <!-- 粒子背景容器 -->
+    <div id="particles-container" class="fixed inset-0 pointer-events-none z-0"></div>
+    
+    <!-- 主要内容容器 -->
+    <main class="relative z-10 container mx-auto px-4 py-8">
+        <!-- 头部区域 -->
+        <header class="text-center mb-12">
+            <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-romantic text-primary text-shadow-lg animate-fade-in-up" style="animation-delay: 0.2s;">
+                遇见你，是最美的时光
+            </h1>
+            <div class="w-32 h-1 bg-primary mx-auto my-4 rounded-full opacity-80 animate-fade-in" style="animation-delay: 0.6s;"></div>
+            <p class="text-[clamp(1.1rem,2vw,1.3rem)] text-gray-600 max-w-2xl mx-auto animate-fade-in-up" style="animation-delay: 0.8s;">
+                在这如画的山水之间，我想告诉你...
+            </p>
+        </header>
+        
+        <!-- 图片展示区域 -->
+        <section class="mb-16">
+            <div class="relative max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-700 hover:scale-[1.01] animate-fade-in-up" style="animation-delay: 1s;">
+                <!-- 图片容器 -->
+                <div class="relative">
+                    <!-- 主图 -->
+                    <img src="data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=" alt="浪漫山水风景" class="w-full h-auto rounded-t-2xl" id="main-image">
+                    <!-- 图片遮罩 -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent flex items-end">
+                        <p class="text-white text-xl p-6 text-shadow">云门山·龙王寨 - 见证我们的爱情</p>
+                    </div>
+                    
+                    <!-- 浪漫漂浮元素 -->
+                    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                        <!-- 漂浮爱心 -->
+                        <div class="absolute text-primary/80 animate-float" style="top: 20%; left: 15%; font-size: 24px;">
+                            <i class="fa fa-heart animate-heartbeat"></i>
+                        </div>
+                        <div class="absolute text-secondary/80 animate-float-slow" style="top: 40%; right: 20%; font-size: 20px;">
+                            <i class="fa fa-heart animate-heartbeat" style="animation-delay: 0.3s;"></i>
+                        </div>
+                        <div class="absolute text-accent/80 animate-float" style="top: 60%; left: 25%; font-size: 16px;">
+                            <i class="fa fa-heart animate-heartbeat" style="animation-delay: 0.6s;"></i>
+                        </div>
+                        <div class="absolute text-primary/70 animate-float-slow" style="top: 70%; right: 30%; font-size: 18px;">
+                            <i class="fa fa-heart animate-heartbeat" style="animation-delay: 0.9s;"></i>
+                        </div>
+                        
+                        <!-- 闪光效果 -->
+                        <div class="absolute w-full h-full">
+                            <div class="absolute w-20 h-20 rounded-full bg-white/30 blur-xl animate-float-slow" style="top: 15%; left: 30%; animation-delay: 1.2s;"></div>
+                            <div class="absolute w-16 h-16 rounded-full bg-white/20 blur-lg animate-float" style="top: 50%; right: 25%; animation-delay: 0.8s;"></div>
+                            <div class="absolute w-24 h-24 rounded-full bg-white/25 blur-xl animate-float-slow" style="top: 75%; left: 40%; animation-delay: 1.5s;"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 图片下方文字 -->
+                <div class="bg-white/90 bg-blur p-6 rounded-b-2xl">
+                    <div class="flex items-center mb-3">
+                        <i class="fa fa-heart text-primary animate-heartbeat mr-3"></i>
+                        <h3 class="text-2xl font-romantic text-dark">爱在山水间</h3>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed">
+                        就像这里的山水一样，我们的相遇是那么自然而美好。青山不改，绿水长流，我对你的心意也如同这山间的风景，永恒不变。
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 情书区域 -->
+        <section class="mb-16">
+            <div class="max-w-3xl mx-auto bg-white/80 bg-blur rounded-2xl p-8 shadow-xl animate-fade-in-up" style="animation-delay: 1.2s;">
+                <h2 class="text-3xl font-romantic text-primary mb-6 flex items-center">
+                    <i class="fa fa-book mr-3 text-secondary"></i>致我最亲爱的
+                </h2>
+                <div class="space-y-4 text-gray-700 leading-relaxed">
+                    <p class="animate-fade-in" style="animation-delay: 1.4s;">
+                        亲爱的，
+                    </p>
+                    <p class="animate-fade-in" style="animation-delay: 1.6s;">
+                        当我站在这壮丽的山水之间，看着瀑布从山间倾泻而下，听着流水叮咚作响，我的心也跟着泛起了涟漪。在这样美丽的景色中，我不禁想起了你，想起了我们一起走过的每一段时光。
+                    </p>
+                    <p class="animate-fade-in" style="animation-delay: 1.8s;">
+                        就像这山间的风景一样，你在我生命中是如此的独特而美丽。你的笑容如阳光般温暖，你的眼神如星辰般璀璨，你的陪伴让我的生活充满了色彩和希望。
+                    </p>
+                    <p class="animate-fade-in" style="animation-delay: 2s;">
+                        今天，在这如诗如画的地方，我想告诉你：我喜欢你，不仅仅是因为你的外表，更是因为你的内心。我喜欢你的善良，喜欢你的智慧，喜欢你的坚强，喜欢你所有的一切。
+                    </p>
+                    <p class="animate-fade-in" style="animation-delay: 2.2s;">
+                        愿我们的爱情如同这山水一般，经得起时间的考验，永远保持最初的美好。无论将来遇到什么困难，我都会牵着你的手，一起面对，一起走过。
+                    </p>
+                    <p class="font-semibold text-right mt-8 animate-fade-in" style="animation-delay: 2.4s;">
+                        永远爱你的人
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 互动元素区域 -->
+        <section class="mb-16">
+            <div class="max-w-3xl mx-auto text-center animate-fade-in-up" style="animation-delay: 2.6s;">
+                <h2 class="text-3xl font-romantic text-primary mb-8">你的心意是？</h2>
+                <div class="flex justify-center gap-8">
+                    <button id="accept-btn" class="px-8 py-4 bg-primary text-white rounded-full shadow-lg hover:bg-primary/90 transform transition-all duration-300 hover:scale-105 flex items-center justify-center group">
+                        <i class="fa fa-heart mr-2 group-hover:animate-pulse"></i>接受
+                    </button>
+                    <button id="reject-btn" class="px-8 py-4 bg-gray-300 text-gray-700 rounded-full shadow-lg hover:bg-gray-400 transform transition-all duration-300 reject-btn">
+                        <i class="fa fa-times mr-2"></i>拒绝
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 爱心雨效果容器 -->
+        <div id="hearts-container" class="fixed inset-0 pointer-events-none z-20"></div>
+        
+        <!-- 成功表白弹窗 -->
+        <div id="success-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-500">
+            <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4 transform scale-90 transition-transform duration-300">
+                <div class="text-center">
+                    <i class="fa fa-heart text-6xl text-primary mb-4 animate-heartbeat"></i>
+                    <h3 class="text-3xl font-romantic text-primary mb-4">太棒了！</h3>
+                    <p class="text-gray-700 mb-6">我会用一生的时间去爱你、珍惜你！</p>
+                    <button id="close-modal" class="px-6 py-3 bg-primary text-white rounded-full shadow hover:bg-primary/90 transition-all duration-300">
+                        确定
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- 页脚 -->
+    <footer class="relative z-10 text-center text-gray-500 py-6">
+        <p>用❤️制作的浪漫告白 | 永远爱你</p>
+    </footer>
+    
+    <script>
+        // 等待DOM加载完成
+        document.addEventListener('DOMContentLoaded', function() {
+            // 设置主图（由于无法直接访问原图，这里使用动态加载的方式）
+            // 在实际使用时，可以将下面的图片链接替换为您实际的图片URL
+            const mainImage = document.getElementById('main-image');
+            mainImage.src = '1.png';
+            
+            // 添加更多浪漫动态元素到图片上
+            function addDynamicRomanticElements() {
+                const imageContainer = document.querySelector('.relative:has(#main-image)');
+                if (!imageContainer) return;
+                
+                // 创建更多随机漂浮爱心
+                const heartCount = 8;
+                for (let i = 0; i < heartCount; i++) {
+                    setTimeout(() => {
+                        createRandomFloatingHeart(imageContainer);
+                    }, i * 800);
+                }
+                
+                // 创建飘落的花瓣
+                const petalCount = 15;
+                for (let i = 0; i < petalCount; i++) {
+                    setTimeout(() => {
+                        createPetal(imageContainer);
+                    }, i * 500);
+                }
+            }
+            
+            // 创建随机漂浮爱心
+            function createRandomFloatingHeart(container) {
+                const heart = document.createElement('div');
+                const size = Math.random() * 15 + 10;
+                const left = Math.random() * 80 + 10; // 10-90%
+                const top = Math.random() * 80 + 10; // 10-90%
+                const colors = ['#FF6B81', '#87CEFA', '#FFD700'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const delay = Math.random() * 2;
+                
+                heart.innerHTML = '<i class="fa fa-heart"></i>';
+                heart.style.cssText = `
+                    position: absolute;
+                    left: ${left}%;
+                    top: ${top}%;
+                    font-size: ${size}px;
+                    color: ${color};
+                    opacity: 0.7;
+                    animation: float 3s ease-in-out infinite;
+                    animation-delay: ${delay}s;
+                    pointer-events: none;
+                    z-index: 10;
+                `;
+                
+                container.appendChild(heart);
+                
+                // 8-12秒后移除并重新创建
+                setTimeout(() => {
+                    container.removeChild(heart);
+                    setTimeout(() => createRandomFloatingHeart(container), Math.random() * 2000);
+                }, Math.random() * 4000 + 8000);
+            }
+            
+            // 创建飘落的花瓣
+            function createPetal(container) {
+                const petal = document.createElement('div');
+                const size = Math.random() * 20 + 10;
+                const left = Math.random() * 90 + 5; // 5-95%
+                const duration = Math.random() * 10 + 15; // 15-25s
+                const delay = Math.random() * 5;
+                
+                // 花瓣形状使用特殊字符或图标
+                const petalChars = ['❀', '✿', '⚘'];
+                const petalChar = petalChars[Math.floor(Math.random() * petalChars.length)];
+                
+                petal.textContent = petalChar;
+                petal.style.cssText = `
+                    position: absolute;
+                    left: ${left}%;
+                    top: -20px;
+                    font-size: ${size}px;
+                    color: ${Math.random() > 0.5 ? '#FFB6C1' : '#FFA07A'};
+                    opacity: 0.8;
+                    transform-origin: center;
+                    pointer-events: none;
+                    z-index: 10;
+                `;
+                
+                container.appendChild(petal);
+                
+                // 添加下落动画
+                const animation = petal.animate([
+                    { transform: 'translateY(0) rotate(0deg) scale(0.5)', opacity: 0 },
+                    { transform: 'translateY(100px) rotate(30deg) scale(0.8)', opacity: 0.8, offset: 0.1 },
+                    { transform: 'translateY(200px) rotate(-20deg) scale(0.9)', opacity: 0.8, offset: 0.2 },
+                    { transform: 'translateY(300px) rotate(10deg) scale(1)', opacity: 0.8, offset: 0.3 },
+                    { transform: 'translateY(400px) rotate(-10deg) scale(1)', opacity: 0.8, offset: 0.4 },
+                    { transform: 'translateY(500px) rotate(5deg) scale(0.9)', opacity: 0.8, offset: 0.5 },
+                    { transform: 'translateY(600px) rotate(-5deg) scale(0.8)', opacity: 0.8, offset: 0.6 },
+                    { transform: 'translateY(700px) rotate(0deg) scale(0.7)', opacity: 0.6, offset: 0.8 },
+                    { transform: 'translateY(800px) rotate(0deg) scale(0.5)', opacity: 0 }
+                ], {
+                    duration: duration * 1000,
+                    delay: delay * 1000,
+                    easing: 'ease-in-out'
+                });
+                
+                animation.onfinish = () => {
+                    container.removeChild(petal);
+                    // 随机时间后重新创建
+                    setTimeout(() => createPetal(container), Math.random() * 3000 + 2000);
+                };
+            }
+            
+            // 在图片加载完成后添加动态元素
+            mainImage.onload = function() {
+                addDynamicRomanticElements();
+            };
+            
+            // 如果图片已经加载完成，立即添加
+            if (mainImage.complete) {
+                addDynamicRomanticElements();
+            }
+            
+            // 由于无法直接使用原始图片，这里我们创建一些模拟内容
+            // 实际应用中，建议将真实图片上传到服务器并使用其URL
+            
+            // 创建粒子背景
+            createParticles();
+            
+            // 添加交互功能
+            setupInteractions();
+            
+            // 添加滚动动画效果
+            setupScrollAnimations();
+        });
+        
+        // 创建粒子背景
+        function createParticles() {
+            const container = document.getElementById('particles-container');
+            const particleCount = 80; // 增加粒子数量
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                
+                // 随机属性
+                const size = Math.random() * 6 + 2; // 2-8px
+                // 添加更多浪漫色彩选项
+                const colors = ['#FF6B81', '#87CEFA', '#FFD700', '#FFB6C1', '#E6E6FA'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const posX = Math.random() * 100; // 0-100%
+                const posY = Math.random() * 100; // 0-100%
+                const duration = Math.random() * 20 + 10; // 10-30s
+                const delay = Math.random() * 5; // 0-5s
+                const opacity = Math.random() * 0.5 + 0.1; // 0.1-0.6
+                
+                // 随机形状：圆形或心形图标
+                if (Math.random() > 0.7) {
+                    // 使用心形图标
+                    particle.innerHTML = '<i class="fa fa-heart"></i>';
+                    particle.style.cssText = `
+                        position: absolute;
+                        font-size: ${size * 2}px;
+                        color: ${color};
+                        left: ${posX}%;
+                        top: ${posY}%;
+                        opacity: ${opacity};
+                        animation: float ${duration}s linear infinite;
+                        animation-delay: ${delay}s;
+                        transform: translateY(0);
+                    `;
+                } else {
+                    // 圆形粒子
+                    particle.style.cssText = `
+                        position: absolute;
+                        width: ${size}px;
+                        height: ${size}px;
+                        background-color: ${color};
+                        border-radius: 50%;
+                        left: ${posX}%;
+                        top: ${posY}%;
+                        opacity: ${opacity};
+                        animation: float ${duration}s linear infinite;
+                        animation-delay: ${delay}s;
+                        transform: translateY(0);
+                    `;
+                }
+                
+                container.appendChild(particle);
+            }
+            
+            // 添加动画
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes float {
+                    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+                    10% { opacity: 0.5; }
+                    90% { opacity: 0.5; }
+                    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        // 设置交互功能
+        function setupInteractions() {
+            const acceptBtn = document.getElementById('accept-btn');
+            const rejectBtn = document.getElementById('reject-btn');
+            const successModal = document.getElementById('success-modal');
+            const closeModal = document.getElementById('close-modal');
+            
+            // 接受按钮点击事件
+            acceptBtn.addEventListener('click', function() {
+                // 显示爱心雨
+                showHeartRain();
+                
+                // 显示成功弹窗
+                setTimeout(() => {
+                    successModal.classList.remove('opacity-0', 'pointer-events-none');
+                    successModal.querySelector('div').classList.remove('scale-90');
+                    successModal.querySelector('div').classList.add('scale-100');
+                }, 1000);
+            });
+            
+            // 拒绝按钮交互 - 总是逃跑
+            rejectBtn.addEventListener('mousemove', function(e) {
+                const btnRect = rejectBtn.getBoundingClientRect();
+                const windowWidth = window.innerWidth;
+                const windowHeight = window.innerHeight;
+                
+                // 计算鼠标与按钮中心的距离
+                const centerX = btnRect.left + btnRect.width / 2;
+                const centerY = btnRect.top + btnRect.height / 2;
+                const distanceX = e.clientX - centerX;
+                const distanceY = e.clientY - centerY;
+                const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+                
+                // 当鼠标接近按钮时，按钮移动
+                if (distance < 100) {
+                    // 计算新位置，远离鼠标方向
+                    const moveX = (distanceX / distance) * -50; // 移动50px远离鼠标
+                    const moveY = (distanceY / distance) * -50;
+                    
+                    // 获取按钮当前位置
+                    const currentX = parseInt(rejectBtn.style.left || '0');
+                    const currentY = parseInt(rejectBtn.style.top || '0');
+                    
+                    // 计算新位置，确保不超出屏幕
+                    let newX = currentX + moveX;
+                    let newY = currentY + moveY;
+                    
+                    // 限制在屏幕内
+                    newX = Math.max(0, Math.min(windowWidth - btnRect.width, newX));
+                    newY = Math.max(0, Math.min(windowHeight - btnRect.height, newY));
+                    
+                    // 应用新位置
+                    rejectBtn.style.position = 'relative';
+                    rejectBtn.style.left = newX + 'px';
+                    rejectBtn.style.top = newY + 'px';
+                }
+            });
+            
+            // 关闭弹窗
+            closeModal.addEventListener('click', function() {
+                successModal.classList.add('opacity-0', 'pointer-events-none');
+                successModal.querySelector('div').classList.remove('scale-100');
+                successModal.querySelector('div').classList.add('scale-90');
+            });
+        }
+        
+        // 显示爱心雨
+        function showHeartRain() {
+            const container = document.getElementById('hearts-container');
+            const heartCount = 100;
+            
+            for (let i = 0; i < heartCount; i++) {
+                createHeart(container);
+            }
+            
+            // 3秒后清除爱心雨
+            setTimeout(() => {
+                container.innerHTML = '';
+            }, 3000);
+        }
+        
+        // 创建单个爱心
+        function createHeart(container) {
+            const heart = document.createElement('div');
+            
+            // 随机属性
+            const size = Math.random() * 20 + 10; // 10-30px
+            const left = Math.random() * 100; // 0-100%
+            const duration = Math.random() * 3 + 2; // 2-5s
+            const delay = Math.random() * 2; // 0-2s
+            
+            // 设置样式
+            heart.innerHTML = '<i class="fa fa-heart"></i>';
+            heart.style.cssText = `
+                position: absolute;
+                left: ${left}%;
+                top: -30px;
+                font-size: ${size}px;
+                color: #FF6B81;
+                opacity: 0;
+                transform: translateY(0) rotate(0deg);
+                animation: heartFall ${duration}s ease-in-out forwards;
+                animation-delay: ${delay}s;
+            `;
+            
+            container.appendChild(heart);
+        }
+        
+        // 添加爱心下落动画
+        const heartFallStyle = document.createElement('style');
+        heartFallStyle.textContent = `
+            @keyframes heartFall {
+                0% {
+                    top: -30px;
+                    opacity: 0;
+                    transform: translateY(0) rotate(0deg) scale(0.3);
+                }
+                10% {
+                    opacity: 1;
+                    transform: translateY(0) rotate(5deg) scale(1);
+                }
+                90% {
+                    opacity: 1;
+                }
+                100% {
+                    top: 100vh;
+                    opacity: 0;
+                    transform: translateY(0) rotate(360deg) scale(0.8);
+                }
+            }
+        `;
+        document.head.appendChild(heartFallStyle);
+        
+        // 设置滚动动画
+        function setupScrollAnimations() {
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.animate-on-scroll');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if (elementPosition < screenPosition) {
+                        element.classList.add('active');
+                    }
+                });
+            };
+            
+            // 初始检查
+            animateOnScroll();
+            
+            // 滚动时检查
+            window.addEventListener('scroll', animateOnScroll);
+        }
+    </script>
+</body>
+</html>
